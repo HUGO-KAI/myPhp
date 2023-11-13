@@ -1,12 +1,12 @@
 <?php
-$adeviner = rand(0, 100);
+$adeviner = 81;
 if (isset($_GET['chiffre'])) {
     if ($_GET['chiffre'] > $adeviner){
         echo 'Ce chiffre est trop grand';
     }elseif ($_GET['chiffre'] < $adeviner){
         echo 'Ce chiffre est trop petit';
     }else {
-        echo 'Error';
+        echo 'Bingo!';
     } 
 }
 ?>
