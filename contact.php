@@ -1,7 +1,7 @@
-<?php
-
+<?php 
+$title ="Nous contact";
+require 'header.php' 
 ?>
-<?php require 'header.php' ?>
 
 <div class="container">Contact me</div>
 

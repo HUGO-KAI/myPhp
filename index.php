@@ -1,4 +1,4 @@
-<?php $title ="My blog";
+<?php $title ="Page d'accueil";
 ?>
 <?php require ("header.php") ?>
 

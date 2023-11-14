@@ -1,9 +1,19 @@
-<?php $title ="About me";
+<?php
+    if (!function_exists('navItem'))
+    {
+        function navItem ( string $lien, string $titre ): string
+        {
+            $classe = 'nav-link';
+            if ($_SERVER["SCRIPT_NAME"] && $_SERVER["SCRIPT_NAME"] == $lien){
+                $classe .= ' active';
+            }
+            return '<li class="nav-item">
+            <a class="'.$classe.'" aria-current="page" href="'.$lien.'">'.$titre.'</a>
+            </li>'; 
+        }
+    }
+    
+    
 ?>
-<?php 
-require ("header.php"); 
-?>
-<div class="container">this is about page</div>
-
-
-<?php require ("footer.php") ?>
+<?= navItem ( '/index.php', 'Accueil' ) ?>
+<?= navItem ( '/contact.php', 'Contact' ) ?>
