@@ -21,38 +21,41 @@
   </head>
 
   <body>
-    <header class="p-3 mb-3 border-bottom">
-        <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-            </a>
+    <?php
+    function navLinkActive ( $link ) {
+        if ($_SERVER["SCRIPT_NAME"] && $_SERVER["SCRIPT_NAME"] == $link){
+            echo 'active';
+        }else{
+            echo '';
+        }
+    }
+    
+    ?>
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="./index.php">Mon site</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="./index.php" class="nav-link px-2 link-secondary myLink">Home</a></li>
-                <li><a href="./about.php" class="nav-link px-2 link-body-emphasis myLink">About</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis myLink">Javascript</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Php</a></li>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <div class="dropdown text-end">
-            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link <?php navLinkActive('/index.php') ?>" aria-current="page" href="./index.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php navLinkActive('/menu.php') ?>" href="./menu.php">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php navLinkActive('/contact.php') ?>" href="./contact.php">Contact</a>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
             </div>
-        </div>
-        </div>
+            </div>
+        </nav>
     </header>
-    <body>
     
