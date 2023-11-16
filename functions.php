@@ -3,16 +3,16 @@ function nav_item ( string $lien, string $titre, string $linkClasss = '' ): stri
 {
     $classe = 'nav-item';
     if ($_SERVER["SCRIPT_NAME"] && $_SERVER["SCRIPT_NAME"] == $lien){
-        $classe .= ' active';
+        $linkClasss .= ' active';
     }
     return <<<HTML
     <li class="$classe">
-        <a class="$classe" aria-current="page" href="$lien">$titre</a>
+        <a class="$linkClasss" aria-current="page" href="$lien">$titre</a>
     </li>
-    HTML;
+HTML;
 }
 
-function nav_menu (string $linkClass): string
+function nav_menu (string $linkClass = ''): string
 {
     return 
     nav_item ( '/index.php', 'Accueil' , $linkClass).

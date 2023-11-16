@@ -1,3 +1,6 @@
+<?php
+require_once("functions.php");
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -15,8 +18,7 @@
   </head>
 
   <body>
-
-    <header class="container-fluid">
+    <header class="container-fluid px-0">
         <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
             <div class="container-fluid">
             <a class="navbar-brand" href="./index.php">Mon site</a>
@@ -26,11 +28,8 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample02">
                 <ul class="navbar-nav me-auto">
-                    <?php require('menu.php'); ?>
+                    <?= nav_menu("nav-link") ?>
                 </ul>
-                <form role="search">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                </form>
             </div>
             </div>
         </nav>
