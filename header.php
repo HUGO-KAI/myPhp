@@ -34,4 +34,3 @@ require_once("functions.php");
             </div>
         </nav>
     </header>
-    <main>

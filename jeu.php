@@ -1,30 +1,60 @@
 <?php
 $aDeviner =150;
+$erreur = null;
+$succes = null;
+$value = null;
+$title = "Jouer un jeu";
 require("header.php");
 ?>
-<?php
-echo '<div class="container">';
-if (isset($_GET["chiffre"])){
-    if ($_GET["chiffre"]>$aDeviner){
-        echo "le chiffre est trop grand";
-    }elseif($_GET["chiffre"]<$aDeviner){
-        echo "le chiffre est trop petit";
+<div class="row mt-4" style="min-height:80vh;">
+    <div class="col-8 d-flex justify-content-center">
+    <?php
+echo '<div class="col-4 text-center">';
+if (isset($_POST["chiffre"])){
+    $value = (int)$_POST["chiffre"];
+    if ($value > $aDeviner){
+        $erreur = "Votre chiffre est trop grand";
+    }elseif($value < $aDeviner){
+        $erreur = "Votre chiffre est trop petit";
     }else{
-        echo "Bingo!";
+        $succes = "Bravo! Vous avez deviné le chiffre <strong>$aDeviner</strong>";
     };
-};
+}; 
+?>
+
+<?php if ($erreur != null): ?>
+<div class="alert alert-danger mt-2">
+    <?= $erreur ?>
+</div>
+<?php elseif ($succes != null): ?>
+<div class="alert alert-success mt-2">
+    <?= $succes ?>
+</div>
+<?php else: ?>
+<div class="alert alert-primary mt-2">
+    Deviner le chiffre:
+</div>
+<?php endif ?>
+
+<?php
 echo <<<HTML
-<form action='jeu.php' method="get" class="container-fluid px-0">
-    <label for="chiffre">Deviner le chiffre:</label><br>
-    <input type="number" id="chiffre" name="chiffre" placeholder="Entre 0 et 1000"><br>
-    <input type="submit" class="mt-1" value="Confirmer">
+<form action='jeu.php' method="POST" class="container-fluid px-0">
+    <input type="number" class="form-control" id="chiffre" name="chiffre" placeholder="Entre 0 et 1000" value="<?= $value ?>"><br>
+    <input type="submit" value="Confirmer">
 </form>
 HTML;
-echo '<a href="jeu.php" class="btn btn-primary mt-1">Recommencer</a>';
+echo '<a href="jeu.php" class="btn btn-primary mt-3">Recommencer</a>';
 echo '</div>';
 ?>
 
+    </div>
 
+
+
+<?php
+require("sideNav.php");
+?>
+</div>
 <?php
 require("footer.php");
 ?>
