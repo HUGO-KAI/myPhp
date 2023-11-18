@@ -6,7 +6,7 @@ $value = null;
 $title = "Jouer un jeu";
 require("header.php");
 ?>
-<div class="row mt-4" style="min-height:80vh;">
+<div class="row mt-4" style="min-height:75vh;">
     <div class="col-8 d-flex justify-content-center">
     <?php
 echo '<div class="col-4 text-center">';

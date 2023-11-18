@@ -42,6 +42,17 @@ function radio (string $name, string $value, array $data): string
     <input type="radio" name="{$name}" value="$value" $attributes>
 HTML;
 }
+
+function horaireOuvert (array $creneaux) {
+    $phrases = [];
+    foreach($creneaux as $creneau){
+        $phrases[] = "de <strong>{$creneau[0]}h</strong> à <strong>{$creneau[1]}h</strong>";
+    };
+    if (count($phrases) === 0){
+        return "Magasin fermé";
+    }
+    return 'Ouvert '.implode(' et ',$phrases);
+}
     
     
 ?>

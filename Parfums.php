@@ -38,7 +38,7 @@ $total += calculTotal ("cornet",$cornets);
 $total += calculTotal ("supplement",$supplements);
 ?>
 
-<div class="row mt-4" style="min-height:80vh;">
+<div class="row my-4" style="min-height:75vh;">
     <div class="row col-8 d-flex justify-content-around">
         <!-- Parti gauche-->
         <div class="col-4">
