@@ -39,7 +39,7 @@ $total += calculTotal ("supplement",$supplements);
 ?>
 
 <div class="row my-4" style="min-height:75vh;">
-    <div class="row col-8 d-flex justify-content-around">
+    <div class="row col-md-10 d-flex justify-content-around">
         <!-- Parti gauche-->
         <div class="col-4">
             <form action='parfums.php' method="GET" class="container">

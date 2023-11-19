@@ -53,6 +53,20 @@ function horaireOuvert (array $creneaux) {
     }
     return 'Ouvert '.implode(' et ',$phrases);
 }
+
+function in_creneaux (int $heure, array $creneaux){
+    $ouvert = false;
+    foreach($creneaux as $k => $creneau){
+        if($k === ((int)date('N')-1)){
+            foreach($creneau as $horaire){
+                if($heure >= $horaire[0] && $heure <= $horaire[1]){
+                    $ouvert = true;
+                }
+            }
+        }
+    }
+    return $ouvert;
+}
     
     
 ?>

@@ -31,6 +31,4 @@ define('CRENEAUX', array(
     ],
     [],
     []
-    
-
 ));
