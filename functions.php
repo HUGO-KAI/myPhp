@@ -43,18 +43,20 @@ function radio (string $name, string $value, array $data): string
 HTML;
 }
 
-function horaireOuvert (array $creneaux) {
+function horaireOuvert (array $creneaux):string
+{
     $phrases = [];
     foreach($creneaux as $creneau){
         $phrases[] = "de <strong>{$creneau[0]}h</strong> à <strong>{$creneau[1]}h</strong>";
     };
-    if (count($phrases) === 0){
+    if (empty($phrases)){
         return "Magasin fermé";
     }
     return 'Ouvert '.implode(' et ',$phrases);
 }
 
-function in_creneaux (int $heure, array $creneaux){
+function in_creneaux (int $heure, array $creneaux):bool
+{
     $ouvert = false;
     foreach($creneaux as $k => $creneau){
         if($k === ((int)date('N')-1)){
@@ -67,6 +69,5 @@ function in_creneaux (int $heure, array $creneaux){
     }
     return $ouvert;
 }
-    
-    
+
 ?>

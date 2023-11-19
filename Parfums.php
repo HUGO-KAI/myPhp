@@ -38,10 +38,10 @@ $total += calculTotal ("cornet",$cornets);
 $total += calculTotal ("supplement",$supplements);
 ?>
 
-<div class="row my-4" style="min-height:75vh;">
-    <div class="row col-md-10 d-flex justify-content-around">
+<div class="row my-4 g-0" style="min-height:75vh;">
+    <div class="row col-md-10 d-flex justify-content-around g-0">
         <!-- Parti gauche-->
-        <div class="col-4">
+        <div class="col-md-5">
             <form action='parfums.php' method="GET" class="container">
                 <h3>Choisissez vos parfums</h3>
                 <hr/>
@@ -77,7 +77,7 @@ $total += calculTotal ("supplement",$supplements);
             </form>
         </div>
         <!-- Parti milieu-->
-        <div class="col-4 bg-primary-subtle">
+        <div class="col-md-5 bg-primary-subtle px-2">
                 <h3 class="text-center">Votre choix</h3>
                 <hr>
                 <h4>Parfums:</h4>
