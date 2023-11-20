@@ -9,7 +9,6 @@ $ouvert = in_creneaux($heure,CRENEAUX);
 ?>
 <div class="row mt-4 g-0" style="min-height:80vh;">
     <div class="col-md-10 text-center">
-        <h2 class="text-primary">Nous contacter</h2> 
         <div>
             <h5>Horaire d'ouvertures</h5>
             <hr>

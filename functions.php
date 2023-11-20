@@ -19,7 +19,8 @@ function nav_menu (string $linkClass = ''): string
     nav_item ( '/contact.php', 'Contact' , $linkClass).
     nav_item ( '/jeu.php', 'Jeu' , $linkClass).
     nav_item ( '/parfums.php', 'Parfum' , $linkClass).
-    nav_item ( '/menu.php', 'Menu' , $linkClass);
+    nav_item ( '/menu.php', 'Menu' , $linkClass).
+    nav_item ( '/newslettre.php', 'Newslettre' , $linkClass);
 }
 
 function checkbox (string $name, string $value, array $data): string
