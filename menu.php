@@ -12,8 +12,8 @@ require './components/header.php';
 ?>
 
 <div class="row mt-4 g-0">
-    <div class="container col-md-10">
-        <h1>Menu</h1>
+    <div class="container px-5 col-md-10">
+        <h1 class="bg-primary-subtle text-center">Menu</h1>
         <?php foreach($lignes as $ligne): ?>
             <?php if(count($ligne) === 1): ?>
                 <h2><?= $ligne[0] ?></h2>
