@@ -17,7 +17,7 @@ $supplements =[
 ];
 $title = "Composer votre glace";
 $total = 0;
-require("header.php");
+require("./components/header.php");
 function calculTotal ($data,$collection)
 {
     $result = 0;
@@ -104,9 +104,9 @@ $total += calculTotal ("supplement",$supplements);
             </div>
     </div>
     <?php
-    require("sideNav.php");
+    require("./components/sideNav.php");
     ?>
 </div>
 <?php
-    require("footer.php");
+    require("./components/footer.php");
 ?>

@@ -1,7 +1,7 @@
 <?php 
 $title ="Nous contact";
 require 'functions.php';
-require 'header.php'; 
+require './components/header.php'; 
 require 'config.php';
 date_default_timezone_set('Europe/Paris');
 $heure = (int)date('G');
@@ -29,12 +29,11 @@ $ouvert = in_creneaux($heure,CRENEAUX);
                 <?php else: ?>
                 <div class="alert alert-danger col-md-5">
                     Le magasin est fermé maintenant
-                    <? $reOuvert ?>
                 </div>
                 <?php endif ?>
             </div>
         </div>
     </div>
-    <?php require 'sideNav.php' ?>
+    <?php require './components/sideNav.php' ?>
 </div>
-<?php require 'footer.php' ?>
+<?php require './components/footer.php' ?>

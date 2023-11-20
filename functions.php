@@ -18,7 +18,8 @@ function nav_menu (string $linkClass = ''): string
     nav_item ( '/index.php', 'Accueil' , $linkClass).
     nav_item ( '/contact.php', 'Contact' , $linkClass).
     nav_item ( '/jeu.php', 'Jeu' , $linkClass).
-    nav_item ( '/parfums.php', 'Parfum' , $linkClass);
+    nav_item ( '/parfums.php', 'Parfum' , $linkClass).
+    nav_item ( '/menu.php', 'Menu' , $linkClass);
 }
 
 function checkbox (string $name, string $value, array $data): string
@@ -43,6 +44,10 @@ function radio (string $name, string $value, array $data): string
 HTML;
 }
 
+/*
+*Retourner les créneaux de la semaine, si vide retourner 'magasin fermé'
+*Parametre: un array qui contien tous les creneaux de la semaine.
+*/
 function horaireOuvert (array $creneaux):string
 {
     $phrases = [];
@@ -55,19 +60,22 @@ function horaireOuvert (array $creneaux):string
     return 'Ouvert '.implode(' et ',$phrases);
 }
 
+//Vérifier si magasin est ouvert
 function in_creneaux (int $heure, array $creneaux):bool
 {
     $ouvert = false;
+    //Trouver le jours
     foreach($creneaux as $k => $creneau){
         if($k === ((int)date('N')-1)){
+            //Trouver le creneau
             foreach($creneau as $horaire){
-                if($heure >= $horaire[0] && $heure <= $horaire[1]){
+                //Vérifier si ouvert
+                if($heure > $horaire[0] && $heure < $horaire[1]){
                     $ouvert = true;
                 }
             }
         }
     }
     return $ouvert;
-}
-
+}  
 ?>

@@ -4,7 +4,7 @@ $erreur = null;
 $succes = null;
 $value = null;
 $title = "Jouer un jeu";
-require("header.php");
+require("./components/header.php");
 ?>
 <div class="row mt-4 g-0" style="min-height:80vh;">
     <div class="col-md-10 d-flex justify-content-center">
@@ -52,9 +52,9 @@ echo '</div>';
 
 
 <?php
-require("sideNav.php");
+require("./components/sideNav.php");
 ?>
 </div>
 <?php
-require("footer.php");
+require("./components/footer.php");
 ?>
