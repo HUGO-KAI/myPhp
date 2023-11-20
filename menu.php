@@ -1,14 +1,23 @@
 
 <?php
 $title = "Notre menu";
-$menu = file_get_contents("./data/menu.txt");
+//Séparer le text par ligne
+$lignes = file("./data/menu.csv");
+//Eliminer les caractères spéciaux et separer les mot par le séparator ';'
+foreach($lignes as $k => $ligne){
+    $lignes[$k] = str_getcsv(trim($ligne," \t\n\0\r\x0B;"),";");
+}
+require 'functions.php';
+require './components/header.php';
+
+//Parser une fichier txt
+/* $menu = file_get_contents("./data/menu.txt");
 $lignes = explode("\n", $menu);
 foreach($lignes as $k => $ligne){
     $lignes[$k] = explode("\t",trim($ligne));
 }
-header("content-type:text/html;charset=utf-8");
 require 'functions.php';
-require './components/header.php';
+require './components/header.php'; */
 ?>
 
 <div class="row mt-4 g-0">
