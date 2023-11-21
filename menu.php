@@ -1,6 +1,7 @@
 
 <?php
 $title = "Notre menu";
+//Parser un fichier csv
 //Séparer le text par ligne
 $lignes = file("./data/menu.csv");
 //Eliminer les caractères spéciaux et separer les mot par le séparator ';'
@@ -10,7 +11,7 @@ foreach($lignes as $k => $ligne){
 require 'functions.php';
 require './components/header.php';
 
-//Parser une fichier txt
+//Parser un fichier txt
 /* $menu = file_get_contents("./data/menu.txt");
 $lignes = explode("\n", $menu);
 foreach($lignes as $k => $ligne){
