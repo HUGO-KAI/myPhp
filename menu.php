@@ -10,6 +10,8 @@ foreach($lignes as $k => $ligne){
 }
 require 'functions.php';
 require './components/header.php';
+require './functions/compteur.php';
+nombre_vue ();
 
 //Parser un fichier txt
 /* $menu = file_get_contents("./data/menu.txt");

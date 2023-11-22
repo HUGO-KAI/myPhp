@@ -13,4 +13,3 @@ $compteur = nombre_vue ();
     <?php require ("./components/sideNav.php") ?>
 </div>
 <?php require ("./components/footer.php") ?>
-

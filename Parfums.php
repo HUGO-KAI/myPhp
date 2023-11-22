@@ -18,6 +18,8 @@ $supplements =[
 $title = "Composer votre glace";
 $total = 0;
 require("./components/header.php");
+require './functions/compteur.php';
+nombre_vue ();
 function calculTotal ($data,$collection)
 {
     $result = 0;
@@ -39,70 +41,75 @@ $total += calculTotal ("supplement",$supplements);
 ?>
 
 <div class="row my-4 g-0" style="min-height:75vh;">
-    <div class="row col-md-10 d-flex justify-content-around g-0">
-        <!-- Parti gauche-->
-        <div class="col-md-5">
-            <form action='parfums.php' method="GET" class="container">
-                <h3>Choisissez vos parfums</h3>
-                <hr/>
-                <?php foreach($parfums as $parfum => $prix): ?>
-                    <div class="checkbox">
-                        <label>
-                            <?= checkbox('parfum', $parfum, $_GET) ?>
-                            <?= $parfum ?> - <?= $prix ?>€
-                        </label>
-                    </div>
-                <?php endforeach; ?>
-                <h3>Choisissez votre cornet</h3>
-                <hr/>
-                <?php foreach($cornets as $cornet => $prix): ?>
-                    <div class="radio">
-                        <label>
-                            <?= radio('cornet', $cornet, $_GET) ?>
-                            <?= $cornet ?> - <?= $prix ?>€
-                        </label>
-                    </div>
-                <?php endforeach; ?>
-                <h3>Choisissez vos suppléments</h3>
-                <hr/>
-                <?php foreach($supplements as $supplement => $prix): ?>
-                    <div class="checkbox">
-                        <label>
-                            <?= checkbox('supplement', $supplement, $_GET) ?>
-                            <?= $supplement ?> - <?= $prix ?>€
-                        </label>
-                    </div>
-                <?php endforeach; ?>
-                <button type="submit" class="btn btn-primary mt-2">Composer ma glace</button>
-            </form>
-        </div>
-        <!-- Parti milieu-->
-        <div class="col-md-5 bg-primary-subtle px-2">
-                <h3 class="text-center">Votre choix</h3>
-                <hr>
-                <h4>Parfums:</h4>
-                <?php if (isset($_GET["parfum"])): ?>
-                    <?php foreach($_GET["parfum"] as $parfum): ?>
-                        - <?= $parfum ?><br>
+    <div class="col-md-10 ">
+        <h5 class="text-center">Votre glacier</h5>
+        <hr>
+        <div class="row d-flex justify-content-around g-0">
+            <!-- Parti gauche-->
+            <div class="col-md-5">
+                <form action='parfums.php' method="GET" class="container">
+                    <h3>Choisissez vos parfums</h3>
+                    <hr/>
+                    <?php foreach($parfums as $parfum => $prix): ?>
+                        <div class="checkbox">
+                            <label>
+                                <?= checkbox('parfum', $parfum, $_GET) ?>
+                                <?= $parfum ?> - <?= $prix ?>€
+                            </label>
+                        </div>
                     <?php endforeach; ?>
-                <?php endif; ?>
-                <hr>
-                <h4>Cornet:</h4>
-                <?php if (isset($_GET["cornet"])): ?>
-                        - <?= $_GET["cornet"] ?><br>
-                <?php endif; ?>
-                <hr>
-                <h4>Supplements:</h4>
-                <?php if (isset($_GET["supplement"])): ?>
-                    <?php foreach($_GET["supplement"] as $supplement): ?>
-                        - <?= $supplement ?><br>
+                    <h3>Choisissez votre cornet</h3>
+                    <hr/>
+                    <?php foreach($cornets as $cornet => $prix): ?>
+                        <div class="radio">
+                            <label>
+                                <?= radio('cornet', $cornet, $_GET) ?>
+                                <?= $cornet ?> - <?= $prix ?>€
+                            </label>
+                        </div>
                     <?php endforeach; ?>
-                <?php endif; ?>
-                <hr>
-                <h4>Prix total: <?= $total ?></h4>
-                <hr>
+                    <h3>Choisissez vos suppléments</h3>
+                    <hr/>
+                    <?php foreach($supplements as $supplement => $prix): ?>
+                        <div class="checkbox">
+                            <label>
+                                <?= checkbox('supplement', $supplement, $_GET) ?>
+                                <?= $supplement ?> - <?= $prix ?>€
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
+                    <button type="submit" class="btn btn-primary mt-2">Composer ma glace</button>
+                </form>
             </div>
+            <!-- Parti milieu-->
+            <div class="col-md-5 bg-primary-subtle px-2">
+                    <h3 class="text-center">Votre choix</h3>
+                    <hr>
+                    <h4>Parfums:</h4>
+                    <?php if (isset($_GET["parfum"])): ?>
+                        <?php foreach($_GET["parfum"] as $parfum): ?>
+                            - <?= $parfum ?><br>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <hr>
+                    <h4>Cornet:</h4>
+                    <?php if (isset($_GET["cornet"])): ?>
+                            - <?= $_GET["cornet"] ?><br>
+                    <?php endif; ?>
+                    <hr>
+                    <h4>Supplements:</h4>
+                    <?php if (isset($_GET["supplement"])): ?>
+                        <?php foreach($_GET["supplement"] as $supplement): ?>
+                            - <?= $supplement ?><br>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <hr>
+                    <h4>Prix total: <?= $total ?></h4>
+                    <hr>
+                </div>
+        </div>
     </div>
+    
     <?php
     require("./components/sideNav.php");
     ?>

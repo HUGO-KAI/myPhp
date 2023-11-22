@@ -3,6 +3,8 @@ $title ="Nous contact";
 require 'functions.php';
 require './components/header.php'; 
 require 'config.php';
+require './functions/compteur.php';
+nombre_vue ();
 date_default_timezone_set('Europe/Paris');
 $heure = (int)date('G');
 $ouvert = in_creneaux($heure,CRENEAUX);

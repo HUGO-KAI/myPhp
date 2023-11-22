@@ -14,6 +14,8 @@ if (isset($_POST['email'])){
     }
 }
 require './components/header.php';
+require './functions/compteur.php';
+nombre_vue ();
 ?>
 
 <div class="row mt-4 g-0" style="min-height:80vh;">
