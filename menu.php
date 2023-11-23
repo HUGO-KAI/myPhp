@@ -1,4 +1,3 @@
-
 <?php
 $title = "Notre menu";
 //Parser un fichier csv
@@ -11,7 +10,7 @@ foreach($lignes as $k => $ligne){
 require 'functions.php';
 require './components/header.php';
 require './functions/compteur.php';
-nombre_vue ();
+ajouter_vue ();
 
 //Parser un fichier txt
 /* $menu = file_get_contents("./data/menu.txt");
@@ -24,7 +23,7 @@ require './components/header.php'; */
 ?>
 
 <div class="row mt-4 g-0">
-    <div class="container px-5 col-md-10">
+    <div class="col-md-10 px-5">
         <h1 class="bg-primary-subtle text-center">Menu</h1>
         <?php foreach($lignes as $ligne): ?>
             <?php if(count($ligne) === 1): ?>

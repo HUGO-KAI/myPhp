@@ -19,7 +19,7 @@ $title = "Composer votre glace";
 $total = 0;
 require("./components/header.php");
 require './functions/compteur.php';
-nombre_vue ();
+ajouter_vue ();
 function calculTotal ($data,$collection)
 {
     $result = 0;

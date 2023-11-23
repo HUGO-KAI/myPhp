@@ -5,7 +5,7 @@ $succes = null;
 $value = null;
 $title = "Jouer un jeu";
 require './functions/compteur.php';
-nombre_vue ();
+ajouter_vue ();
 require("./components/header.php");
 ?>
 <div class="row mt-4 g-0" style="min-height:80vh;">
