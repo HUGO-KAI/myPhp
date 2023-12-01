@@ -21,7 +21,8 @@ function nav_menu (string $linkClass = ''): string
     nav_item ( '/parfums.php', 'Parfum' , $linkClass).
     nav_item ( '/menu.php', 'Menu' , $linkClass).
     nav_item ( '/newslettre.php', 'Newslettre' , $linkClass).
-    nav_item ( '/dashboard.php', 'Dashboard' , $linkClass);
+    nav_item ( '/dashboard.php', 'Dashboard' , $linkClass).
+    nav_item ( '/login.php', 'Login' , $linkClass);
 }
 
 function checkbox (string $name, string $value, array $data): string
