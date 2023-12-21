@@ -1,5 +1,6 @@
 <?php
 require_once("functions.php");
+require_once dirname(__DIR__).DIRECTORY_SEPARATOR.'functions'.DIRECTORY_SEPARATOR.'auth.php';
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -21,16 +22,21 @@ require_once("functions.php");
     <header class="container-fluid px-0">
         <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
             <div class="container-fluid">
-            <a class="navbar-brand" href="./index.php">Mon site</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <a class="navbar-brand" href="./index.php">Mon site</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample02">
-                <ul class="navbar-nav me-auto">
-                    <?= nav_menu("nav-link") ?>
-                </ul>
-            </div>
+                <div class="collapse navbar-collapse" id="navbarsExample02">
+                    <ul class="navbar-nav me-auto">
+                        <?= nav_menu("nav-link") ?>
+                    </ul>
+                    <ul class="navbar-nav">
+                    <?php if (is_connected()): ?>
+                        <li><a class="nav-item nav-link active" href="./logout.php">logout</a></li>
+                        <?php endif ?>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>

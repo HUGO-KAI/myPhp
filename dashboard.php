@@ -1,7 +1,9 @@
 <?php 
 $title ="Dashboard";
+require './functions/auth.php';
+$auth = is_connected();
+verify_authorization($auth);
 require './functions/compteur.php';
-
 $annee = (int)date('Y');
 $anneeSelected = isset($_GET['annee']) ? $_GET['annee'] : null;
 $moiSelected = empty($_GET['mois']) ? null : $_GET['mois'];
@@ -24,9 +26,6 @@ if ($anneeSelected && $moiSelected) {
     $vueDetails = nombre_vues_mois_detail((int)$anneeSelected, (int)$moiSelected);
 }else{
     $total = nombre_vue ();
-}
-if(isset($_POST["email"]) && $_POST["email"]="email@exemple.com"){
-    
 }
 
 ?>
