@@ -1,4 +1,5 @@
 <?php
+$title="Login";
 $erreur = null;
 $pwdHash = '$2y$10$Y3WViIv5YWLp28aHlqTNVOlbFqlgPzY.55QVuQpDBpL5bxXUUk1.6';
 if (isset($_POST['pseudo']) && isset($_POST['password'])) {

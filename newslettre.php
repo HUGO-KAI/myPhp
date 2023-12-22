@@ -1,4 +1,5 @@
 <?php
+$title="Newslettre";
 $email = null;
 $error = null;
 $success = null;
