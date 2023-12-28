@@ -28,4 +28,27 @@ class Message {
         }
         return $errors;
     }
+
+    public function toJSON(): string
+    {
+        return json_encode([
+            'username' => $this->username,
+            'message' => $this->message,
+            'date' => $this->date->getTimestamp()
+        ]);
+    }
+
+    public function toHTML(): string
+    {
+        $username = htmlentities($this->username);
+        $this->date->setTimezone(new DateTimeZone('Europe/Paris'));
+        $date = $this->date->format('d/m/Y H:i');
+        $message = nl2br(htmlentities($this->message));
+        return <<<HTML
+        <div class="mb-1 col-10 col-md-6 mx-auto">
+            <strong>{$username}</strong><span class='mx-2'>le {$date}</span>
+            <p>{$message}</p>
+        </div>
+        HTML;
+    }
 }
