@@ -11,15 +11,22 @@ class Meteosource {
     }
 
     //Chercher la ville, returne une liste de villes trouvée par le nom saisi
-    public function getPlace (string $city):array
+    public function getPlace (string $city)
     {
         
         $this->city = implode("%20", explode(' ', $city));
 
         $this->baseUrl = self::BASE_URL;
         $url = "https://$this->baseUrl/find_places?text=$city&language=en";
-
-        $response = $this->apiCall($url,"GET",$this->codeApi); 
+        try{
+            $response = $this->apiCall($url,"GET",$this->codeApi);
+        }catch (Exception $exception) {
+            $response = [];
+            return [
+                'message' => $exception->getMessage()
+            ];
+        }
+         
         return json_decode($response);
     }
     //Appeler l'API de resource
@@ -41,14 +48,12 @@ class Meteosource {
         ]);
 
         $response = curl_exec($curl);
-        $err = curl_error($curl);
-
         curl_close($curl);
-
-        if ($err) {
-            return "cURL Error #:" . $err;
-        } else {
+        if ($response === false){
+            throw new CurlException($curl);
+        }else{
             return $response;
         }
+        
     }   
 }

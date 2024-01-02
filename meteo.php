@@ -6,7 +6,8 @@ require 'class\Meteo.php';
 require 'variable\envVariable.php';
 $meteo = new Meteosource ($_ENV["METEO_API_KEY"]);
 if (isset($_POST['city'])){
-    $cities = $meteo->getPlace('Paris');
+    $city = $_POST['city'];
+    $cities = $meteo->getPlace($city);
 }
 
 ?>
@@ -20,30 +21,31 @@ if (isset($_POST['city'])){
                 <button type="submit" class="btn btn-primary">Chercher</button>
             </div>
         </form>
+
         <div>
-            <?php if (!empty($cities)): ?>
-            <form class="container d-flex flex-wrap justify-content-between">
+            <?php if (is_iterable($cities)): ?>
+            <form class="grid gap-0 column-gap-3">
                     <?php foreach($cities as $city): ?>
-                        <div class="card">
-                            <ul class="card-body list-group">
+                        <div class="card mb-4 g-col-3">
+                            <ul class="card-body list-unstyled" >
                                 <fieldset disabled>
-                                    <li class="list-group-item">
+                                    <li class="">
                                         <label for="disabledTextInput" class="form-label">Ville:</label>
                                         <input type="text" id="disabledTextInput" class="form-control" placeholder="" value="<?= $city->name ?>">
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="">
                                         <label for="disabledTextInput" class="form-label">Région:</label>
                                         <input type="text" id="disabledTextInput" class="form-control" placeholder="" value="<?= $city->adm_area1 ?>">
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="">
                                         <label for="disabledTextInput" class="form-label">Pays:</label>
                                         <input type="text" id="disabledTextInput" class="form-control" placeholder="" value="<?= $city->country ?>">
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="">
                                         <label for="latitude" class="form-label">Latitude:</label>
                                         <input type="text" id="latitude" name="latitude"class="form-control" placeholder="" value="<?= $city->lat ?>">
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="">
                                         <label for="longitude" class="form-label">Longitude:</label>
                                         <input type="text" id="longitude" name="longitude"class="form-control mb-3" placeholder="" value="<?= $city->lon ?>">
                                     </li>
@@ -54,6 +56,8 @@ if (isset($_POST['city'])){
                         
                     <?php endforeach ?>
             </form>
+            <?php elseif(isset($cities->message)): ?>
+                <div class="alert alert-danger"><?= $cities->message ?></div> 
             <?php endif ?>    
         </div>
     </div>
