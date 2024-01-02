@@ -1,30 +1,42 @@
 <?php 
 class Meteosource {
+    const BASE_URL = 'ai-weather-by-meteosource.p.rapidapi.com';
     private $codeApi;
     private $date;
     private $city;
+    private $baseUrl;
 
     public function __construct($codeApi){
         $this->codeApi = $codeApi;
     }
 
-    public function getForecast (string $city)
+    //Chercher la ville, returne une liste de villes trouvée par le nom saisi
+    public function getPlace (string $city):array
     {
         
         $this->city = implode("%20", explode(' ', $city));
-        $curl = curl_init();
 
+        $this->baseUrl = self::BASE_URL;
+        $url = "https://$this->baseUrl/find_places?text=$city&language=en";
+
+        $response = $this->apiCall($url,"GET",$this->codeApi); 
+        return json_decode($response);
+    }
+    //Appeler l'API de resource
+    private function apiCall (string $resource, string $method, string $apiKey):string
+    {
+        $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://ai-weather-by-meteosource.p.rapidapi.com/find_places?text=$this->city&language=en",
+            CURLOPT_URL => $resource,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_HTTPHEADER => [
-                "X-RapidAPI-Host: ai-weather-by-meteosource.p.rapidapi.com",
-                "X-RapidAPI-Key: 2eaf586f6bmshb5bffe4090f7ffbp10d37cjsnddbe6becf6ec"
+                "X-RapidAPI-Host: $this->baseUrl",
+                "X-RapidAPI-Key: $this->codeApi"
             ],
         ]);
 
@@ -34,9 +46,9 @@ class Meteosource {
         curl_close($curl);
 
         if ($err) {
-            echo "cURL Error #:" . $err;
+            return "cURL Error #:" . $err;
         } else {
-            echo $response;
+            return $response;
         }
-    }
+    }   
 }
