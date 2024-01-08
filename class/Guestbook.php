@@ -1,5 +1,15 @@
 <?php 
 require_once 'Message.php';
+
+
+/**
+ * Guestbook pour la page livre d'or
+ * 
+ * Créer un fichier (avec le nom donné) à fin d'enregister le message
+ * Récupérer les messages quand on aura besoin
+ * 
+ * @param string $filename (nom du fichier à enregistrer, ex: \data\message )
+ */
 class Guestbook {
     private $filename;
 
@@ -20,7 +30,12 @@ class Guestbook {
     {
         file_put_contents($this->filename, $message->toJSON().PHP_EOL, FILE_APPEND);
     }
-
+    
+    /**
+     * Récupérer les messages enregistré dans le fichier
+     *
+     * @return array Retourner une liste des messages en json
+     */
     public function getMessages():array
     {
         $content = trim(file_get_contents($this->filename));

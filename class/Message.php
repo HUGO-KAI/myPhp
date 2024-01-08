@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Gérer le message sur la page livre d'or
+ * 
+ * @param string $username
+ * @param string $message
+ * @param DateTime|null $date null par défaut
+ */
 class Message {
     const LIMIT_USERNAME = 3;
     const LIMIT_MESSAGE = 10;
@@ -28,7 +35,12 @@ class Message {
         }
         return $errors;
     }
-
+    
+    /**
+     * Transformer le message en format JSON
+     *
+     * @return string
+     */
     public function toJSON(): string
     {
         return json_encode([
@@ -37,7 +49,12 @@ class Message {
             'date' => $this->date->getTimestamp()
         ]);
     }
-
+    
+    /**
+     * Transformer le message en langue HTML
+     *
+     * @return string
+     */
     public function toHTML(): string
     {
         $username = htmlentities($this->username);

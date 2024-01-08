@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Retourner un formulaire pas encore fini
+ * 
+ */
 class Form {
     public static $class = "form-control";
     public static function checkbox (string $name, string $value = null, array $data = []):string {

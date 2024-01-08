@@ -1,4 +1,5 @@
 <?php
+//Retourner un nav item
 function nav_item ( string $lien, string $titre, string $linkClasss = '' ): string
 {
     $classe = 'nav-item';
@@ -11,7 +12,7 @@ function nav_item ( string $lien, string $titre, string $linkClasss = '' ): stri
     </li>
 HTML;
 }
-
+//Retourner navbar utilisé dans le header
 function nav_menu (string $linkClass = ''): string
 {
     return 
@@ -22,8 +23,8 @@ function nav_menu (string $linkClass = ''): string
     nav_item ( '/parfums.php', 'Parfum' , $linkClass).
     nav_item ( '/menu.php', 'Menu' , $linkClass).
     nav_item ( '/newslettre.php', 'Newslettre' , $linkClass).
-    nav_item ( '/dashboard.php', 'Dashboard' , $linkClass).
     nav_item ( '/livredor.php', 'Livre d\'or' , $linkClass).
+    nav_item ( '/dashboard.php', 'Dashboard' , $linkClass).    
     nav_item ( '/login.php', 'Login' , $linkClass);
 }
 

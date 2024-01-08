@@ -1,13 +1,21 @@
 <?php
+/**
+ * Compter nombre de vue par page du site internet.
+ * 
+ * @param string $fichier  nom du fichier.
+ */
+
 class Compteur {
 
     protected $fichier;
 
-    public function __construct(string $fichier) {
+    public function __construct(string $fichier) 
+    {
         $this->fichier = $fichier;
     }
-
-    public function incrementer():void {
+    //Incrementer
+    public function incrementer():void 
+    {
         $compteur = 1;
         if ( file_exists($this->fichier)) {
             $compteur = (int)file_get_contents($this->fichier);

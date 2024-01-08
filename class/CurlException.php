@@ -1,4 +1,9 @@
 <?php
+
+/*
+* Gérer l'exception d'appeler API
+* 
+*/
 class CurlException extends Exception {
     public function __contruct ($curl) 
     {

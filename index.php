@@ -1,4 +1,7 @@
 <?php 
+/*
+* Page d'accueil 
+*/
 $title ="Page d'accueil";
 require './functions/compteur.php';
 ajouter_vue ();
