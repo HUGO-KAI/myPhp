@@ -1,6 +1,6 @@
 <?php 
 class Meteosource {
-    const BASE_URL = 'ai-weather-by-meteosource.p.rapidapi.com';
+    const BASE_URL = 'www.meteosource.com';
     private $codeApi;
     private $date;
     private $city;
@@ -10,50 +10,43 @@ class Meteosource {
         $this->codeApi = $codeApi;
     }
 
-    //Chercher la ville, returne une liste de villes trouvée par le nom saisi
+    /**
+    * Chercher la ville, returne une liste de villes trouvée par le nom saisi   
+    */
     public function getPlace (string $city)
     {
-        
         $this->city = implode("%20", explode(' ', $city));
-
         $this->baseUrl = self::BASE_URL;
-        $url = "https://$this->baseUrl/find_places?text=$city&language=en";
-        try{
-            $response = $this->apiCall($url,"GET",$this->codeApi);
-        }catch (Exception $exception) {
-            $response = [];
-            return [
-                'message' => $exception->getMessage()
-            ];
-        }
-         
+        $url = "https://$this->baseUrl/api/v1/free/find_places?text=$this->city&key=$this->codeApi";
+        $response = $this->apiCall($url,"GET");
         return json_decode($response);
     }
-    //Appeler l'API de resource
-    private function apiCall (string $resource, string $method, string $apiKey):string
-    {
-        $curl = curl_init();
-        curl_setopt_array($curl, [
-            CURLOPT_URL => $resource,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => $method,
-            CURLOPT_HTTPHEADER => [
-                "X-RapidAPI-Host: $this->baseUrl",
-                "X-RapidAPI-Key: $this->codeApi"
-            ],
-        ]);
 
-        $response = curl_exec($curl);
-        curl_close($curl);
-        if ($response === false){
-            throw new CurlException($curl);
-        }else{
-            return $response;
-        }
+    /**
+    * Chercher la ville, returne une liste de villes trouvée par le nom saisi   
+    */
+    public function getMeteo (string $place_id)
+    {
+        $this->city = $place_id;
+        $this->baseUrl = self::BASE_URL;
+        $url = "https://$this->baseUrl/api/v1/free/point?place_id=$this->city&sections=all&timezone=UTC&language=en&units=metric&key=$this->codeApi";
+        $response = $this->apiCall($url,"GET");
+        return json_decode($response);
+    }
+
+    //Appeler l'API de resource
+    private function apiCall (string $resource, string $method)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $resource);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        
+        return $response;
         
     }   
 }

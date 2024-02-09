@@ -1,5 +1,5 @@
 <?php 
-/*
+/**
 * Page d'accueil 
 */
 $title ="Page d'accueil";
