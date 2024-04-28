@@ -1,6 +1,6 @@
 <?php
 $title="Newslettre";
-$email = null;
+$email = '';
 $error = null;
 $success = null;
 if (isset($_POST['email'])){
