@@ -39,7 +39,7 @@ require 'components\header.php';
                 </div>
             <?php endif ?>
             <label for="username" class="form-label fw-semibold">Votre pseudo</label>
-            <input type="text" class="form-control <?= $errors['username']?'is-invalid':'' ?>" id="username" placeholder="Entrer votre pseudo" name="username" value=<?= $success?'':htmlentities($_POST['username']??'') ?>>
+            <input type="text" class="form-control <?= isset($errors['username'])?'is-invalid':'' ?>" id="username" placeholder="Entrer votre pseudo" name="username" value=<?= $success?'':htmlentities($_POST['username']??'') ?>>
             <?php if (isset($errors['username'])): ?>
                 <div class="invalid-feedback">
                     <?= $errors['username'] ?>
@@ -47,7 +47,7 @@ require 'components\header.php';
             <?php endif ?>
 
             <label for="message" class="form-label mt-1 fw-semibold">Message</label>
-            <textarea class="form-control <?= $errors['message']?'is-invalid':'' ?>" name="message" id="message" rows="6" placeholder="Entrer votre message et puis envoyer"><?php if (isset($message->message)): ?><?= $success?'':htmlentities($_POST['message']) ?><?php endif ?></textarea>
+            <textarea class="form-control <?= isset($errors['message'])?'is-invalid':'' ?>" name="message" id="message" rows="6" placeholder="Entrer votre message et puis envoyer"><?php if (isset($message->message)): ?><?= $success?'':htmlentities($_POST['message']) ?><?php endif ?></textarea>
 
             <?php if (isset($errors['message'])): ?>
                 <div class="invalid-feedback">
